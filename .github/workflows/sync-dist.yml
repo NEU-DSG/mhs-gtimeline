@@ -1,0 +1,34 @@
+name: Sync dist folder to target repo
+
+on:
+  push:
+    branches:
+      - main 
+    paths:
+      - 'dist/**'  # Trigger only when the dist folder is updated
+
+jobs:
+  sync-dist:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source repository
+        uses: actions/checkout@v3
+
+      - name: Sync dist to target repository
+        env:
+          PAT: ${{ secrets.PAT_TOKEN }}
+        run: |
+         
+          # Clone the target repository using the PAT
+          git clone https://$PAT@github.com/ankudovychm/11ty-DSG-WEB.git target-repo
+          cd target-repo
+
+          # Sync the dist folder
+          rm -rf dist
+          cp -R ../dist .
+
+          # Commit and push changes
+          git add dist
+          git commit -m "Update dist folder from dsg-gtimeline"
+          git push origin main
