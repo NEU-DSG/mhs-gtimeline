@@ -38,7 +38,7 @@ jobs:
 
           # Sync the dist folder to the timeline folder in the target location
           rm -rf src/JsScripts/timeline  # Remove old contents
-          cp -R ../dist src/JsScripts/timeline  # Copy updated dist folder and rename it to timeline
+          cp -R ../dist src/JsScripts/timeline/dist  # Copy updated dist folder and rename it to timeline
 
           # Commit and push changes
           git add src/JsScripts/timeline
