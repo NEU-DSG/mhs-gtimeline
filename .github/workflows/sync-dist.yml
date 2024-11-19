@@ -1,4 +1,4 @@
-name: Sync dist folder to target repo
+name: Sync dist folder to dsg-web repo
 
 on:
   # Allow manual triggering of the workflow
@@ -33,11 +33,14 @@ jobs:
           git clone https://$PAT@github.com/ankudovychm/11ty-DSG-WEB.git target-repo
           cd target-repo
 
-          # Sync the dist folder
-          rm -rf dist
-          cp -R ../dist .
+          # Ensure the target directory exists
+          mkdir -p src/JsScripts/timeline
+
+          # Sync the dist folder to the timeline folder in the target location
+          rm -rf src/JsScripts/timeline  # Remove old contents
+          cp -R ../dist src/JsScripts/timeline  # Copy updated dist folder and rename it to timeline
 
           # Commit and push changes
-          git add dist
-          git commit -m "Update dist folder from dsg-gtimeline"
+          git add src/JsScripts/timeline
+          git commit -m "Update timeline folder from dsg-gtimeline"
           git push origin main
