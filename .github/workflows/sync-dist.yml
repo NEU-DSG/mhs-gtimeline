@@ -1,25 +1,34 @@
 name: Sync dist folder to target repo
 
 on:
+  # Allow manual triggering of the workflow
+  workflow_dispatch:
+
+  # Trigger on push to the main branch if the dist folder is updated
   push:
     branches:
-      - main 
+      - main
     paths:
-      - 'dist/**'  # Trigger only when the dist folder is updated
+      - 'dist/**'
 
 jobs:
   sync-dist:
     runs-on: ubuntu-latest
 
     steps:
+      # Checkout the source repository
       - name: Checkout source repository
         uses: actions/checkout@v3
 
+      # Sync dist to target repository
       - name: Sync dist to target repository
         env:
           PAT: ${{ secrets.PAT_TOKEN }}
         run: |
-         
+          # Configure Git user
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
           # Clone the target repository using the PAT
           git clone https://$PAT@github.com/ankudovychm/11ty-DSG-WEB.git target-repo
           cd target-repo
