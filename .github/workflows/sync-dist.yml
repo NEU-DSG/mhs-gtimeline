@@ -34,13 +34,13 @@ jobs:
           cd target-repo
 
           # Ensure the target directory exists
-          mkdir -p src/JsScripts/timeline
+          mkdir -p src/JsScripts/timeline/dist
 
-          # Sync the dist folder to the timeline folder in the target location
-          rm -rf src/JsScripts/timeline  # Remove old contents
-          cp -R ../dist src/JsScripts/timeline/dist  # Copy updated dist folder and rename it to timeline
+          # Sync the dist folder into the specified location
+          rm -rf src/JsScripts/timeline/dist  # Remove old contents
+          cp -R ../dist/* src/JsScripts/timeline/dist/  # Copy updated dist folder contents
 
           # Commit and push changes
-          git add src/JsScripts/timeline
-          git commit -m "Update timeline folder from dsg-gtimeline"
+          git add src/JsScripts/timeline/dist
+          git commit -m "Update dist folder in src/JsScripts/timeline/dist from dsg-gtimeline"
           git push origin main
