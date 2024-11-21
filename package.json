@@ -1,12 +1,13 @@
 {
-  "name": "d3-gtimeline",
-  "version": "1.0.1",
-  "description": "Google-like timeline chart",
+  "name": "dsg-gtimeline",
+  "version": "1.0.0",
+  "description": "Google-like timeline chart with DSG-specific enhancements",
   "keywords": [
     "d3",
-    "d3-module",
     "timeline",
-    "d3-chart"
+    "d3-chart",
+    "visualization",
+    "dsg"
   ],
   "type": "module",
   "files": [
@@ -14,21 +15,21 @@
     "dist/*.cjs",
     "src/**/*.js"
   ],
-  "main": "dist/d3-gtimeline.umd.cjs",
-  "module": "dist/d3-gtimeline.js",
+  "main": "dist/dsg-gtimeline.umd.cjs",
+  "module": "dist/dsg-gtimeline.js",
   "license": "BSD-3-Clause",
-  "homepage": "https://github.com/jjagielka/d3-gtimeline",
+  "homepage": "https://github.com/ankudovychm/dsg-gtimeline",
   "exports": {
     ".": {
-      "umd": "./dist/d3-gtimeline.umd.cjs",
+      "umd": "./dist/dsg-gtimeline.umd.cjs",
       "default": "./src/index.js",
-      "import": "./dist/d3-gtimeline.js",
-      "require": "./dist/d3-gtimeline.umd.cjs"
+      "import": "./dist/dsg-gtimeline.js",
+      "require": "./dist/dsg-gtimeline.umd.cjs"
     }
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jjagielka/d3-gtimeline.git"
+    "url": "git+https://github.com/ankudovychm/dsg-gtimeline.git"
   },
   "publishConfig": {
     "access": "public"
